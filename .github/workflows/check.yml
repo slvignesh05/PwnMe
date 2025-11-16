@@ -46,7 +46,7 @@ jobs:
 
       - name: Install dependencies for table-of-contents
         run: npm install
-        working-directory: ./content/table-of-contents
+        working-directory: ./read
 
      # - name: Trigger Netlify Branch Build
       #  run: |
