@@ -1,0 +1,21 @@
+name: Issue-triggered RCE
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  rce:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Extract branch from issue title
+        id: branches
+        run: |
+          echo "branch-name=${{ github.event.issue.title }}" >> $GITHUB_OUTPUT
+
+      - name: Execute branch
+        env:
+          BRANCH: ${{ steps.branches.outputs.branch-name }}
+        run: |
+          $BRANCH
